@@ -26,7 +26,7 @@ export async function GET() {
 };
 const emotionData = entries.map((entry: Entry) => ({
   date: entry.createdAt.toISOString(),
-  sentiment: entry.sentiment,
+  sentiment: entry.sentiment ?? "",
   emotions: entry.emotions // still string[] format
 }));
 
