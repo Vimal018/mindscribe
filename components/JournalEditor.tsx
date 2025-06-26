@@ -8,24 +8,23 @@ export default function JournalEditor({ onSave }: { onSave?: () => void }) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
-    console.log("Submitting Entry", { content, tags }); // Add log to check values
-  
+
+    console.log("Submitting Entry", { content, tags });
+
     const res = await fetch("/api/test/entry", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content, tags: tags.split(",") }),
     });
-  
+
     if (res.ok) {
       setContent("");
       setTags("");
       if (onSave) onSave();
     } else {
-      console.error("Error saving entry", await res.json()); // Log error if POST fails
+      console.error("Error saving entry", await res.json());
     }
   };
-  
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 mb-6">
@@ -46,10 +45,9 @@ export default function JournalEditor({ onSave }: { onSave?: () => void }) {
       <button
         type="submit"
         className="bg-blue-600 hover:bg-blue-700 transition text-white px-4 py-2 rounded"
-        >
+      >
         Save Entry
-    </button>
-
+      </button>
     </form>
   );
 }
