@@ -16,7 +16,7 @@ export async function POST(req: Request) {
           emotions: [emotion], // Store the emotion as an array
           userId,
           sentiment: "neutral", // Provide a default or dynamic value for sentiment
-          User: { connect: { id: userId } }, // Connect the user by their ID
+          user: { connect: { id: userId } }, // Connect the user by their ID (removed, not valid)
         },
       });
   
