@@ -24,7 +24,7 @@ export async function GET() {
   sentiment: string;
   emotions: string[];
 };
-const emotionData = entries.map((entry: Entry) => ({
+const emotionData = entries.map((entry) => ({
   date: entry.createdAt.toISOString(),
   sentiment: entry.sentiment ?? "",
   emotions: entry.emotions // still string[] format
