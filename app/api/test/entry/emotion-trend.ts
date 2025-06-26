@@ -19,11 +19,17 @@ export async function GET() {
     });
 
     // Format the entries for emotion trend visualization
-    const emotionData = entries.map(entry => ({
-      date: entry.createdAt,
-      sentiment: entry.sentiment,
-      emotions: entry.emotions,
-    }));
+    type Entry = {
+  createdAt: Date;
+  sentiment: string;
+  emotions: string[];
+};
+const emotionData = entries.map((entry: Entry) => ({
+  date: entry.createdAt.toISOString(),
+  sentiment: entry.sentiment,
+  emotions: entry.emotions // still string[] format
+}));
+
 
     return NextResponse.json(emotionData, { status: 200 });
   } catch (error) {
